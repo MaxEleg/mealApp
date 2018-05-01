@@ -34,7 +34,7 @@ function register (req,res){
         token : tokenUser
       });
     });
-  })
+  });
 };
 
 module.exports = register;
