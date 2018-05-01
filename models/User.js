@@ -11,7 +11,7 @@ var userSchema = new mongoose.Schema({
   mail      	: { type : String, required : "Le mail entré est invalide.", unique : true },
   rank      	: { type : Number, required : true },
   banned      : { type : Boolean,required : false },
-  basket      : { type : Array,required : false, default:[] },
+  order      : { type : Array,required : false, default:[] },
 });
 
 userSchema.pre('save',function(next){
