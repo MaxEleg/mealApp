@@ -1,11 +1,9 @@
 var config = require("../../../config");
-var mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
-
 
 const _encode = function(data, callback){
   try{
-    var encoded = jwt.sign(data, config.key);
+    var encoded = jwt.sign(data, config.secretJwt, {expiresIn : "61d" });
     callback(null, encoded);
   }catch(ex){
     console.log(ex);
@@ -16,7 +14,12 @@ const _encode = function(data, callback){
 const _decode = function (token, callback) {
   try {
     if (token) {
-      var decoded = jwt.verify(token, config.key, function(err, decoded) {
+      jwt.verify(token, config.secretJwt, function(err, decoded) {
+        if(err){
+          console.log(err);
+          callback(err);
+          return;
+        }
         callback(null,decoded);
       });
     } else {
