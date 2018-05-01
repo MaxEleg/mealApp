@@ -1,18 +1,7 @@
-var express = require("express");
-var models = require("../../../models");
-var routerAuth = express.Router();
 var token = require("../../lib/token");
 var models = require("../../../models");
 
-routerAuth.post("/", function(req,res){
-  console.log("in auth");
-
-  user.save(function(err){
-    if(err){
-      console.log(err);
-    }
-  });
-
+function auth (req,res){
   function _sendError(){
     res.status(400).json({msg : "Une erreur s'est produite."});
   };
@@ -26,7 +15,12 @@ routerAuth.post("/", function(req,res){
   query['$or'].push({ 'username' : data.account });
   query['$or'].push({ 'mail' : data.account });
 
-  models.User.findOne(query,function(user){
+  models.User.findOne(query,function(err, user){
+    if(err){
+      console.log(err);
+      _sendError();
+      return;
+    }
     if(user){
       user.comparePassword(data.password,function(err,isMatch){
         if(err){
@@ -41,7 +35,7 @@ routerAuth.post("/", function(req,res){
                 _sendError();
                 return;
               }
-              res.status(200).json(encoded);
+              res.status(200).json({firstName : user.firstName, lastName: user.lastName, token : encoded });
             });
         }else{
           _sendAuthFailed();
@@ -52,7 +46,6 @@ routerAuth.post("/", function(req,res){
       return;
     }
   });
+};
 
-});
-
-module.exports = routerAuth;
+module.exports = auth;

@@ -18,12 +18,12 @@ module.exports = function(userRank) {
           res.status(400).json({"msg": "Token incorrect"});
           return;
         }
-
         if (user.rank >= userRank){
           next();
           return;
         }
         res.status(400).json({"msg": "Vous n'avez pas les droits pour accéder à cette fonctionalité."});
+        return;
       });
     });
   };
