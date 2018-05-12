@@ -6,7 +6,7 @@ var mealSchema = new mongoose.Schema({
   price : { type : Number, required : "Merci de préciser le prix de l'article." },
   image : { type : String, required : false },
   quantity : {type : Number },
-  description : {type : Number },
+  description : {type : String },
   stock : {type : String },
   createdAt 	: { type : Date, required : false }
 });
