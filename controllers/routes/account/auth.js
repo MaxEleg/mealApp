@@ -6,7 +6,7 @@ function auth (req,res){
     res.status(400).json({msg : "Une erreur s'est produite."});
   };
   function _sendAuthFailed(){
-    res.json({msg:"Utilisateur introuvable, merci de vérifier votre nom de compte/email et mot de passe"});
+    res.status(400).json({msg:"Utilisateur introuvable, merci de vérifier votre nom de compte/email et mot de passe"});
   };
 
   var data = req.body;
@@ -35,7 +35,12 @@ function auth (req,res){
                 _sendError();
                 return;
               }
-              res.status(200).json({firstName : user.firstName, lastName: user.lastName, token : encoded });
+              res.status(200).json({
+                firstName : user.firstName,
+                lastName: user.lastName,
+                rank: user.rank,
+                token: encoded
+              });
             });
         }else{
           _sendAuthFailed();

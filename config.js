@@ -6,5 +6,6 @@ module.exports = {
 	database : process.env.DATABASE,
 	port : process.env.PORT,
 	portHttps : process.env.PORT+1,
-  app_url : process.env.APP_URL
-}
+  app_url : process.env.APP_URL,
+	openApi : process.env.OPEN_API === 'true'
+};

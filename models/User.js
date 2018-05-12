@@ -8,7 +8,7 @@ var userSchema = new mongoose.Schema({
   lastName  	: { type : String, required : "Veuillez entrer votre nom." },
   firstName 	: { type : String, required : "Veuillez rentrer votre prénom." },
   createdAt 	: { type : Date, required : false },
-  birthdate 	: { type : Date, required : false },
+  birthDate 	: { type : Date, required : false },
   mail      	: { type : String, required : "Le mail entré est invalide.", unique : true },
   rank      	: { type : Number, required : true },
   banned      : { type : Boolean,required : false },
