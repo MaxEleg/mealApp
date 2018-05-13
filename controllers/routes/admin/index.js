@@ -1,18 +1,22 @@
 var express = require("express");
-var routerAccount = express.Router();
-var register = require("./register");
-var auth = require("./auth");
-var edit = require("./edit");
-var info = require("./info");
+var routerAdmin = express.Router();
+var order = require("./order");
+var user = require("./user");
+var meal = require("./meal");
 
 var userMiddleWare = require("../../lib/middlewares/logged");
 
-routerAccount.use('/edit', userMiddleWare(0));
-routerAccount.use('/token', userMiddleWare(0));
+routerAdmin.use('/', userMiddleWare(3));
 
-routerAccount.post("/register", register);
-routerAccount.post("/auth", auth);
-routerAccount.post("/edit", edit);
-routerAccount.post("/info", info);
+routerAdmin.get('/orders/', order.getOrders);
+routerAdmin.post('/order/changeStatus', order.changeStatus);
 
-module.exports = routerAccount;
+routerAdmin.get('/users', user.getUsers);
+routerAdmin.post('/user/ban', user.banUser);
+
+routerAdmin.get('/meals', meal.getMeals);
+routerAdmin.delete('/meal/:id', meal.deleteMeal);
+routerAdmin.post('/meal', meal.addMeal);
+routerAdmin.put('/meal/:id', meal.updateMeal);
+
+module.exports = routerAdmin;

@@ -4,7 +4,7 @@ var models = require("../../../models");
 module.exports = function(userRank) {
   return function (req, res, next) {
     var encodedToken = req.body.token || req.query.token;
-
+    console.log(req.body);
     if (!encodedToken) {
       res.status(400).json({"msg": "Merci de vous connecter pour accéder à cette fonctionalité."});
       return;
@@ -14,6 +14,11 @@ module.exports = function(userRank) {
         res.status(400).json({"msg": "Une erreur est survenue, veillez réessayer ultérieurement."});
       }
       models.User.findById(decodedTokenUser._id, function (err, user) {
+        if(err || !user){
+          res.status(400).json({"msg": "Merci de vous connecter pour accéder à cette fonctionalité."});
+          return;
+        }
+
         if(!decodedTokenUser.username === user.username && decodedTokenUser.password === user.password){
           res.status(400).json({"msg": "Token incorrect"});
           return;
