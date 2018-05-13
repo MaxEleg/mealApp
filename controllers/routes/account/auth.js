@@ -39,7 +39,9 @@ function auth (req,res){
                 firstName : user.firstName,
                 lastName: user.lastName,
                 rank: user.rank,
-                token: encoded
+                token: encoded,
+                phone: user.phone,
+                mail: user.mail
               });
             });
         }else{

@@ -48,14 +48,16 @@ function register (req,res){
     }
     token.encode(newUser.toObject(), function(err, tokenUser){
       if(err){
-        res.status(400).json([{msg:'Une erreure est survenue.'}]);
+        res.status(400).json([{msg:'Une erreur est survenue.'}]);
         return;
       }
       res.json({
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         rank: 0,
-        token : tokenUser
+        token: tokenUser,
+        phone: newUser.phone,
+        mail: newUser.mail
       });
     });
   });
