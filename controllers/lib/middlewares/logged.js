@@ -4,7 +4,6 @@ var models = require("../../../models");
 module.exports = function(userRank) {
   return function (req, res, next) {
     var encodedToken = req.body.token || req.query.token;
-    console.log(req.body);
     if (!encodedToken) {
       res.status(400).json({"msg": "Merci de vous connecter pour accéder à cette fonctionalité."});
       return;

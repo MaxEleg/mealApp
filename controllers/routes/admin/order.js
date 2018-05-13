@@ -24,7 +24,6 @@ function getOrders (req,res){
 function changeStatus (req,res){
   var status = req.body.status;
   var id = req.body.id;
-  console.log(req.body);
   function _sendErr(err) {
     console.log(err);
     res.status(400).send({msg: 'Error occured'});
