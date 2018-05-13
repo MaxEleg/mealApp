@@ -1,6 +1,6 @@
 var express = require("express");
 var routerCheckout = express.Router();
-var stripe = require('stripe')('sk_test_hXAaFjeoqZel78tKM3ICHWYQ');
+var stripe = require('stripe')(process.env.STRIPE_KEY);
 var swig = require('swig');
 var http = require('https');
 var unirest= require('unirest');
@@ -8,7 +8,7 @@ var sleep = require('sleep');
 
 
 routerCheckout.get('/', function(req, res){
-	var data = {title: 'Payer avec Stripe et Node js'};
+	var data = {title: 'Payer'};
 	res.render('index', data);
 });
 
@@ -16,8 +16,8 @@ routerCheckout.get('/', function(req, res){
 routerCheckout.post('/stripe', function(req, res){
 	let stripeToken = '';
 
-	unirest.post("https://noodlio-pay.p.mashape.com/tokens/create")
-	.header("X-Mashape-Key", "aUlQBnsmARmshw2loSTw7Yg996JJp1AkvpxjsndZDw6TIavs95")
+	unirest.post(process.env.NOODLIO_CREATE)
+	.header("X-Mashape-Key", process.env.MASHAPE_KEY)
 	.header("Content-Type", "application/x-www-form-urlencoded")
 	.header("Accept", "application/json")
 	.send("cvc="+req.body.cvc)
@@ -28,18 +28,23 @@ routerCheckout.post('/stripe', function(req, res){
 	.end(function (result) {
   	console.log(result.status, result.headers, result.body);
   		
-		unirest.post("https://noodlio-pay.p.mashape.com/charge/token")
-		.header("X-Mashape-Key", "aUlQBnsmARmshw2loSTw7Yg996JJp1AkvpxjsndZDw6TIavs95")
+		unirest.post(process.env.NOODLIO_PROCESS)
+		.header("X-Mashape-Key", process.env.MASHAPE_KEY)
 		.header("Content-Type", "application/x-www-form-urlencoded")
 		.header("Accept", "application/json")
 		.send("amount="+req.body.article * 100)
 		.send("currency=EUR")
 		.send("description=Burger")
 		.send("source="+result.body.id)
-		.send("stripe_account=acct_12abcDEF34GhIJ5K")
+		.send("stripe_account="+process.env.STRIPE_ACCOUNT)
 		.send("test=true")
 		.end(function (result) {
 	 	console.log(result.status, result.headers, result.body);
+	 	if(result.status > 299){
+      	res.status(400).json({msg:"An error occured"});
+      	return;
+    	}
+    	res.json({msg:"Payment Ok"});
 		});
 	});
 });
