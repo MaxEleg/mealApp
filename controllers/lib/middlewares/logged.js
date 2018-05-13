@@ -19,6 +19,8 @@ module.exports = function(userRank) {
           return;
         }
         if (user.rank >= userRank){
+          req.body.user = user;
+          req.query.user = user;
           next();
           return;
         }
