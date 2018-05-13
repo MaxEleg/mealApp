@@ -1,0 +1,28 @@
+<table class="table table-dark">
+  <thead>
+  <tr>
+    <th scope="col">Commande</th>
+    <th scope="col">Prix total</th>
+    <th scope="col">Statut</th>
+    <th scope="col">Changer status</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders">
+    <td>
+      <ul *ngFor="let meal of order.meals">
+        {{ meal.name }}
+      </ul>
+    </td>
+    <td>{{ order.price }}{{device}}</td>
+    <td>{{ cleanStatus(order.status) }}</td>
+    <td>
+      <ul class="status-btn">
+        <li><button (click)="changeStatus(order._id, 'READY')" type="button" class="btn btn-success">Mettre prête</button></li>
+        <li><button (click)="changeStatus(order._id, 'WAITING')" type="button" class="btn btn-secondary">Mettre en attente</button></li>
+        <li><button (click)="changeStatus(order._id, 'ERROR')" type="button" class="btn btn-danger">Impossible a réaliser</button></li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>

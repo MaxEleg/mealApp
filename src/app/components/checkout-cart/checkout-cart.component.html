@@ -1,0 +1,56 @@
+<div class="container-checkout">
+
+  <h2>Payez votre commande</h2>
+  <form #checkoutForm="ngForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="needs-validation" novalidate="">
+    <hr class="mb-4">
+    <h4 class="mb-3">A payer {{ total }}{{devise}}</h4>
+
+    <div class="mb-3">
+      <label for="address">Email</label>
+      <input name="mail" type="text" class="form-control" id="mail" placeholder="jean.dupont@esgi.fr" ngModel>
+    </div>
+
+    <div class="mb-3">
+      <label for="phone">Téléphone</label>
+      <input name="phone" type="text" class="form-control" id="phone" placeholder="+336 35 00 00 00" ngModel="">
+    </div>
+
+    <div class="mb-3">
+      <label for="address">Adresse</label>
+      <input name="address" type="text" class="form-control" id="address"
+             placeholder="242 Rue du Faubourg Saint-Antoine, 75012 Paris" ngModel>
+      <div class="custom-control custom-checkbox">
+        <input name="enableDelivery" type="checkbox" class="custom-control-input" id="same-address" [checked]="false" ngModel>
+        <label class="custom-control-label" for="same-address">Me livrer à cette adresse</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label for="cc-name">Nom </label>
+        <input name="cardName" type="text" class="form-control" id="cc-name" placeholder="" required="" ngModel>
+        <small class="text-muted">Full name as displayed on card</small>
+        <div class="invalid-feedback">
+          Name on card is required
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="cc-number">Numéro de carte de crédit</label>
+        <input name="cardNumber" type="text" class="form-control" id="cc-number" placeholder="" required="" ngModel>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label for="cc-expiration">Expiration</label>
+        <input name="cardExpiration" type="text" class="form-control" id="cc-expiration" placeholder="" required="" ngModel>
+      </div>
+      <div class="col-md-3 mb-3">
+        <label for="cc-expiration">CVV</label>
+        <input name="cvv" type="text" class="form-control" id="cc-cvv" placeholder="" required="" ngModel>
+      </div>
+    </div>
+    <hr class="mb-4">
+    <button *ngIf="showPayBtn" class="btn btn-primary btn-lg btn-block" type="submit">Payer</button>
+  </form>
+
+</div>
