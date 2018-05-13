@@ -1,5 +1,6 @@
 var token = require("../../lib/token");
 var models = require("../../../models");
+var events = require("events");
 
 function  checkout (req,res) {
   function _sendErr(err) {
