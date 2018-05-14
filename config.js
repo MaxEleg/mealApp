@@ -7,5 +7,9 @@ module.exports = {
 	port : process.env.PORT,
 	portHttps : process.env.PORT+1,
   app_url : process.env.APP_URL,
-	openApi : process.env.OPEN_API === 'true'
+	openApi : process.env.OPEN_API === 'true',
+	smtpHost : process.env.SMTP_HOST,
+	smtpPort : process.env.SMTP_PORT,
+	smtpUser : process.env.SMTP_USER,
+	smtpPass : process.env.SMTP_PASS
 };
