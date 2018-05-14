@@ -20,6 +20,9 @@
           <a *ngIf="!auth.isAuth" class="dropdown-item" routerLink="/register">Créer un compte</a>
 
           <a *ngIf="auth.isAuth" class="dropdown-item" routerLink="/">Connecté en tant que {{ auth.lastName }} {{ auth.firstName }}</a>
+          <a *ngIf="auth.isAuth && auth.rank >= 3" class="dropdown-item" routerLink="/backoffice">
+            Acceder au backoffice
+          </a>
           <a *ngIf="auth.isAuth" class="dropdown-item" (click)="logout()">Se déconnecter</a>
         </div>
       </li>
