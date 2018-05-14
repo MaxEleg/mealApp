@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  app_url: '',
+  app_url: 'http://localhost:3000',
   devise: '€'
 };

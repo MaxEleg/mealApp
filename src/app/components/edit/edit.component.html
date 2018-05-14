@@ -1,4 +1,4 @@
-<div *ngIf="!auth.isAuth" class="row">
+<div *ngIf="auth.isAuth" class="row">
   <div class="col-md-2"></div>
   <div class="col-md-8">
     <div class="py-5 text-center">
@@ -13,7 +13,7 @@
     </div>
 
     <h4 class="mb-3">Informations personnelle</h4>
-    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm.value)" >
+    <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm.value)" >
       <div class="row">
         <div class="col-md-6 mb-3">
           <label for="firstName">Nom </label>
@@ -86,9 +86,9 @@
   </div>
 </div>
 
-<div *ngIf="auth.isAuth" class="row already-auth">
+<div *ngIf="!auth.isAuth" class="row already-auth">
   <div class="col-xs-3 col-sm-4 col-md-4"></div>
   <div class="col-xs-3 col-sm-4 col-md-4">
-    <h1 class="h3 mb-3 font-weight-normal">Vous etes connecté en tant que {{ auth.lastName }} {{ auth.firstName }}</h1>
+    <h1 class="h3 mb-3 font-weight-normal">Vous devez etre connecté pour accéder à cette interface.</h1>
   </div>
 </div>

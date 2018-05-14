@@ -23,37 +23,39 @@ import { ApiService } from './services/api/api.service';
 import { EditComponent } from './components/edit/edit.component';
 import {BackOfficeComponent} from './components/backoffice/backoffice.component';
 import {BackOfficeOrdersComponent} from './components/backoffice-orders/backoffice-orders.component';
+import {BackOfficeUsersComponent} from "./components/backoffice-users/backoffice-users.component";
 
 
 @NgModule({
-  declarations: [
-    RootComponent,
-    NavBarComponent,
-    CardComponent,
-    LoginComponent,
-    RegisterComponent,
-    ShoppingCartComponent,
-    FooterComponent,
-    ShoppingCartItemsComponent,
-    CheckoutCartComponent,
-    EditComponent,
-    BackOfficeComponent,
-    BackOfficeOrdersComponent,
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRoutingModule,
-    FormsModule,
-    StoreModule.forRoot({
-      cart: CartReducer,
-      auth: AuthReducer
-    })
-  ],
-  providers: [
-    AccountService,
-    ApiService,
-  ],
-  bootstrap: [RootComponent]
+    declarations: [
+        RootComponent,
+        NavBarComponent,
+        CardComponent,
+        LoginComponent,
+        RegisterComponent,
+        ShoppingCartComponent,
+        FooterComponent,
+        ShoppingCartItemsComponent,
+        CheckoutCartComponent,
+        EditComponent,
+        BackOfficeComponent,
+        BackOfficeOrdersComponent,
+        BackOfficeUsersComponent,
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRoutingModule,
+        FormsModule,
+        StoreModule.forRoot({
+            cart: CartReducer,
+            auth: AuthReducer
+        })
+    ],
+    providers: [
+        AccountService,
+        ApiService,
+    ],
+    bootstrap: [RootComponent]
 })
 export class AppModule {}

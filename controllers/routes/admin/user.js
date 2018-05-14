@@ -16,8 +16,8 @@ function getUsers (req,res){
 };
 
 function banUser (req,res){
-  var id = req.body._id;
-
+  var id = req.body.id;
+  console.log(id);
   function _sendErr(err) {
     console.log(err);
     res.status(400).send({msg: 'Error occured'});
