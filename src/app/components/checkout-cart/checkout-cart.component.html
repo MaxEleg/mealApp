@@ -1,4 +1,4 @@
-<div class="container-checkout">
+<div *ngIf="!order" class="container-checkout">
 
   <h2>Payez votre commande</h2>
   <form #checkoutForm="ngForm" (ngSubmit)="onSubmit(checkoutForm.value)" class="needs-validation" novalidate="">
@@ -53,4 +53,17 @@
     <button *ngIf="showPayBtn" class="btn btn-primary btn-lg btn-block" type="submit">Payer</button>
   </form>
 
+</div>
+<div *ngIf="order" class="container-checkout">
+  <div class="col-xs-3 col-sm-4 col-md-4"></div>
+  <div class="col-xs-3 col-sm-4 col-md-4">
+    <h1 class="h3 mb-3 font-weight-normal">Votre commande est passée ! </h1>
+    <p class="lead">
+      Elle porte l'identifiant : {{ order._id }}.<br>
+      Récapitulatif :
+    </p>
+    <ul *ngFor="let meal of order.meals" class="list-group">
+      <li class="list-group-item">{{ meal.name }}</li>
+    </ul>
+  </div>
 </div>

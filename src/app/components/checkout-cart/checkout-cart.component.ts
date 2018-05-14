@@ -13,6 +13,7 @@ import {environment} from '../../../environments/environment';
 export class CheckoutCartComponent implements OnInit {
   cart: Meal[];
   auth: WebAuth;
+  order: any = null;
   total = 0;
   devise = environment.devise;
   showPayBtn = true;
@@ -56,9 +57,11 @@ export class CheckoutCartComponent implements OnInit {
       cart: this.cart
     }).subscribe((result) => {
       console.log(result);
+      this.order = result;
       this.showPayBtn = true;
-    }, error => {
-      console.log(error);
+    }, result => {
+      console.log(result);
+      alert(result.error.msg);
       this.showPayBtn = true;
     });
   }

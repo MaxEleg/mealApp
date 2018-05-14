@@ -68,6 +68,11 @@ function  checkout (req,res) {
             _sendErr('Une erreur est survenue.');
             return;
           }
+          if(user.banned){
+            res.status(400).json({msg: 'Vous etes banni, il est impossible pour vous de passer votre commande.'});
+            return;
+          }
+
           order.userId = user._id;
           _createOrder();
         });
