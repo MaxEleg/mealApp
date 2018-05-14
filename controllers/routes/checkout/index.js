@@ -4,7 +4,6 @@ var stripe = require('stripe')(process.env.STRIPE_KEY);
 var swig = require('swig');
 var http = require('https');
 var unirest= require('unirest');
-var sleep = require('sleep');
 
 
 routerCheckout.get('/', function(req, res){
