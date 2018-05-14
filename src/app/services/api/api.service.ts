@@ -75,4 +75,34 @@ export class ApiService {
             headers: headers
         });
     }
+
+    changeMeal(data) {
+        let urlChangeMeal;
+        urlChangeMeal = environment.app_url + '/admin/user/ban';
+
+        const body = new HttpParams()
+            .set(`token`, data.auth.token)
+            .set(`id`, data.id)
+
+        const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+
+        data.token = data.auth.token;
+        return this.http.post(urlChangeMeal, body, {
+            headers: headers
+        });
+    }
+
+    deleteMeal(data) {
+        let urlDeleteMeal;
+        urlDeleteMeal = environment.app_url + '/admin/user/ban';
+
+        const body = new HttpParams()
+            .set(`token`, data.auth.token)
+            .set(`id`, data.id)
+
+        const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+
+        data.token = data.auth.token;
+        return this.http.delete(urlDeleteMeal, data);
+    }
 }

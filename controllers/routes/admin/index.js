@@ -17,6 +17,6 @@ routerAdmin.post('/user/ban', user.banUser);
 routerAdmin.get('/meals', meal.getMeals);
 routerAdmin.delete('/meal/:id', meal.deleteMeal);
 routerAdmin.post('/meal', meal.addMeal);
-routerAdmin.put('/meal/:id', meal.updateMeal);
+routerAdmin.post('/meal/:id', meal.updateMeal);
 
 module.exports = routerAdmin;

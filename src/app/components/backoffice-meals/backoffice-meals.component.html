@@ -1,0 +1,24 @@
+<table class="table table-dark">
+  <thead>
+  <tr>
+    <th scope="col">_id</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Prix</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let meal of meals">
+    <td>{{ meal._id }}</td>
+    <td>{{ meal.name }}</td>
+    <td>{{ meal.price }} {{ device}}</td>
+    <td> </td>
+    <td>
+      <ul class="status-btn">
+        <li><button type="button" class="btn btn-success">Editer</button></li>
+        <li><button type="button" class="btn btn-secondary">Supprimer</button></li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>

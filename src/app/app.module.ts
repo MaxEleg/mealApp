@@ -24,6 +24,7 @@ import { EditComponent } from './components/edit/edit.component';
 import {BackOfficeComponent} from './components/backoffice/backoffice.component';
 import {BackOfficeOrdersComponent} from './components/backoffice-orders/backoffice-orders.component';
 import {BackOfficeUsersComponent} from "./components/backoffice-users/backoffice-users.component";
+import {BackOfficeMealsComponent} from "./components/backoffice-meals/backoffice-meals.component";
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import {BackOfficeUsersComponent} from "./components/backoffice-users/backoffice
         BackOfficeComponent,
         BackOfficeOrdersComponent,
         BackOfficeUsersComponent,
+        BackOfficeMealsComponent,
     ],
     imports: [
         BrowserModule,
