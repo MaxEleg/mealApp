@@ -20,12 +20,14 @@
     <tr>
       <th scope="col">Code</th>
       <th scope="col">Valeur (%)</th>
+      <th scope="col">Status</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let promotion of promotions">
       <td>{{ promotion.code }}</td>
       <td>{{ promotion.value }}%</td>
+      <td>{{ promotion.status }}</td>
       <td>
         <div class="btn-group" role="group">
           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -18,6 +18,7 @@ export class BackOfficeMealsComponent implements OnInit {
     meals: any = [];
     editMeal: any = {};
     device: string = environment.devise;
+    filesToUpload: Array<File> = [];
 
     constructor(private apiService: ApiService ) {
     }
@@ -72,6 +73,22 @@ export class BackOfficeMealsComponent implements OnInit {
         }, result=>{
             console.log(result);
             alert(result.error.msg);
+        });
+    }
+
+    fileChangeEvent(fileInput: any) {
+        this.filesToUpload = <Array<File>>fileInput.target.files;
+    }
+
+    uploadImage() {
+        this.apiService.uploadMealImage({
+            auth: this.auth,
+            img: this.filesToUpload,
+            meal: this.editMeal
+        }).subscribe(result=>{
+            alert("Vos changements on été pris en compte");
+        }, result=>{
+            console.log(result.error);
         });
     }
 }

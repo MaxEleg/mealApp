@@ -4,6 +4,18 @@ var order = require("./order");
 var user = require("./user");
 var meal = require("./meal");
 var promotion = require("./promotion");
+var multer = require("multer");
+
+var storage = multer.diskStorage({
+  // destination
+  destination: function (req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+var upload = multer({ storage: storage });
 
 var userMiddleWare = require("../../lib/middlewares/logged");
 

@@ -65,5 +65,5 @@ module.exports = {
   getMeals: getMeals,
   addMeal: addMeal,
   updateMeal: updateMeal,
-  deleteMeal: deleteMeal
+  deleteMeal: deleteMeal,
 };

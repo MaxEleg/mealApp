@@ -69,7 +69,7 @@ function  checkout (req,res) {
         year: payment.cardExpiration.split('/')[1]
       };
 
-      stripe.pay({
+      /*stripe.pay({ DISABLE B'CAUZ API SANDBOX KEY CHANGES EVERYTIME
         cvc: payment.cvv,
         exp_month: exp.month,
         exp_year: exp.year,
@@ -79,7 +79,7 @@ function  checkout (req,res) {
         if(err){
           console.log(err);
         }
-      });
+      });*/
 
       var cbSave = function(err, newOrder){
         if(err){
@@ -91,7 +91,7 @@ function  checkout (req,res) {
       };
 
       if(payment.code){
-        models.Promotion.findOne({code:payment.code}, function(err,promo){
+        models.Promotion.findOne({code:payment.code, status:"UNUSED"}, function(err,promo){
           if(promo){
             order.price = order.price - (order.price * (promo.value/100));
             order.promotion = promo._id;
@@ -99,6 +99,7 @@ function  checkout (req,res) {
             promo.save();
           }else{
             res.status(400).json({msg: 'Le code promotionel est incorrect.'});
+            return;
           }
           order.save(cbSave)
         });

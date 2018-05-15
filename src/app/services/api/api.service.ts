@@ -120,6 +120,7 @@ export class ApiService {
         data.token = data.auth.token;
         return this.http.delete(urlDeleteMeal, data);
     }
+
     deletePromotion(data) {
         let urlDeleteMeal;
         urlDeleteMeal = environment.app_url + '/admin/promotion/' + data._id + '?token=' + data.auth.token;
@@ -127,4 +128,20 @@ export class ApiService {
         data.token = data.auth.token;
         return this.http.delete(urlDeleteMeal, data);
     }
+
+
+    uploadMealImage(data: any) {
+        let urlUploadMealImage;
+        urlUploadMealImage = environment.app_url + '/upload/?token=' + data.auth.token;
+
+        const formData: any = new FormData();
+        const files: Array<File> = data.img;
+
+        console.log(data.meal._id);
+
+        formData.append('uploads[]', files[0], data.meal._id);
+
+        return this.http.post(urlUploadMealImage, formData);
+    }
+
 }

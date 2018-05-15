@@ -1,7 +1,7 @@
 <div class="row card-container">
   <div class="col-sm-6 col-md-4 meal-card" ng-if="meals.length > 0" *ngFor="let meal of meals">
     <div class="card" style="width: 18rem;">
-      <img class="card-img-top" [attr.src]="app_url + '/upload/' + meal._id" [attr.alt]="meal.name">
+      <img class="card-img-top" [attr.src]="app_url + '/uploads/' + meal._id + '.png'" [attr.alt]="meal.name">
       <div class="card-body">
         <h5 class="card-title">{{meal.name}} <span class="badge badge-success">{{meal.price}}{{devise}}</span></h5>
         <p class="card-text">{{meal.description}}</p>
