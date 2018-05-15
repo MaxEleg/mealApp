@@ -1,0 +1,13 @@
+<div *ngIf="cart.length > 0" class="row cart-container">
+  <div class="col-xs-12">
+    <app-shopping-cart-items [cart]="cart"></app-shopping-cart-items>
+  </div>
+</div>
+<div *ngIf="!(cart.length > 0)" class="row cart-container">
+  <div class="col-xs-3 col-sm-4 col-md-4"></div>
+  <div class="col-xs-3 col-sm-4 col-md-4">
+    <h1 class="h3 mb-3 font-weight-normal">Votre panier est vide</h1>
+    <a routerLink="/card">Retourner à la liste des achats</a>
+  </div>
+</div>
+

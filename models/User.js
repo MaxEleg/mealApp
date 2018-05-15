@@ -5,13 +5,14 @@ var bcrypt = require('bcrypt-nodejs');
 var userSchema = new mongoose.Schema({
   username  	: { type : String, required : "Le nom d'utilisateur entré est invalide.", unique : true },
   password  	: { type : String, required : "Veuillez entrer un mot de passe." },
-  lastname  	: { type : String, required : "Veuillez entrer votre nom." },
-  firstname 	: { type : String, required : "Veuillez rentrer votre prénom." },
-  birthdate 	: { type : String, required : false },
+  lastName  	: { type : String, required : "Veuillez entrer votre nom." },
+  firstName 	: { type : String, required : "Veuillez rentrer votre prénom." },
+  createdAt 	: { type : Date, required : false },
+  birthDate 	: { type : Date, required : false },
   mail      	: { type : String, required : "Le mail entré est invalide.", unique : true },
   rank      	: { type : Number, required : true },
   banned      : { type : Boolean,required : false },
-  basket      : { type : Array,required : false, default:[] },
+  phone : { type : String}
 });
 
 userSchema.pre('save',function(next){

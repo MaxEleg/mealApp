@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" (click)="fetchOrders()" class="btn btn-secondary">
+      <i class="fas fa-sync-alt"></i> Rafraîchir
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Commande</th>
+      <th scope="col">Prix total</th>
+      <th scope="col">Livraison</th>
+      <th scope="col">Statut</th>
+      <th scope="col">Changer status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+      <td>
+        <ul *ngFor="let meal of order.meals">
+          {{ meal.name }}
+        </ul>
+      </td>
+      <td>{{ order.price }}{{device}}</td>
+      <td>
+        <p *ngIf="order.enableDelivery">
+          {{order.address}}
+        </p>
+        <p *ngIf="!order.enableDelivery">
+          Sans livraison
+        </p>
+      </td>
+      <td>{{ cleanStatus(order.status) }}</td>
+      <td>
+
+        <div class="btn-group" role="group" aria-label="Actions">
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Actions
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+              <a (click)="changeStatus(order._id, 'READY')" class="dropdown-item">
+                Mettre prête
+              </a>
+              <a (click)="changeStatus(order._id, 'WAITING')" class="dropdown-item">
+                Mettre en attente
+              </a>
+              <a (click)="changeStatus(order._id, 'ERROR')" class="dropdown-item">
+                Impossible a réaliser
+              </a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
