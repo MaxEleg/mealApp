@@ -16,6 +16,7 @@ import {environment} from '../../../environments/environment';
 export class BackOfficeMealsComponent implements OnInit {
     @Input() auth: WebAuth;
     meals: any = [];
+    editMeal: any = {};
     device: string = environment.devise;
 
     constructor(private apiService: ApiService ) {
@@ -32,13 +33,27 @@ export class BackOfficeMealsComponent implements OnInit {
             alert(result.error.msg);
         });
     }
+    setEdit(meal){
+        this.editMeal =  Object.assign({}, meal);
+    }
 
-    changeBanned(id: string) {
-        this.apiService.changeBanned({ id, auth: this.auth }).subscribe(
-            result => {
-                this.fetchMeals();
-            }, error => {
-                console.log(error);
-            });
+    editSubmit(data){
+        data.auth = this.auth;
+        data.price = data.price.toString().replace(',','.');
+        this.apiService.changeMeal(data).subscribe(result=>{
+            this.fetchMeals();
+        }, result=>{
+            alert(result.error.msg);
+        });
+    }
+
+    deleteMeal(meal){
+        meal.auth = this.auth;
+        this.apiService.deleteMeal(meal).subscribe(result=>{
+            this.fetchMeals();
+        }, result=>{
+            console.log(result);
+            alert(result.error.msg);
+        });
     }
 }

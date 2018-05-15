@@ -1,24 +1,82 @@
-<table class="table table-dark">
-  <thead>
-  <tr>
-    <th scope="col">_id</th>
-    <th scope="col">Nom</th>
-    <th scope="col">Prix</th>
-    <th scope="col">Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let meal of meals">
-    <td>{{ meal._id }}</td>
-    <td>{{ meal.name }}</td>
-    <td>{{ meal.price }} {{ device}}</td>
-    <td> </td>
-    <td>
-      <ul class="status-btn">
-        <li><button type="button" class="btn btn-success">Editer</button></li>
-        <li><button type="button" class="btn btn-secondary">Supprimer</button></li>
-      </ul>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="row">
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" (click)="fetchMeals()" class="btn btn-secondary">
+      <i class="fas fa-sync-alt"></i> Rafraîchir
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let meal of meals">
+      <td>{{ meal.name }}</td>
+      <td>{{ meal.price }} {{ device}}</td>
+      <td>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="dropdown-item" (click)="setEdit(meal)" data-toggle="modal" data-target="#modalEdit">
+              Editer
+            </a>
+            <a (click)="deleteMeal(meal)" class="dropdown-item">
+              Supprimer
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">Editer le plat {{editMeal.name}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #registerForm="ngForm" (ngSubmit)="editSubmit(registerForm.value)" >
+        <div class="modal-body">
+          <input name="id" type="hidden" [(ngModel)]="editMeal._id" >
+          <div class="form-group">
+            <label for="name" class="col-form-label">Nom:</label>
+            <input name="name" type="text" class="form-control" id="name" [(ngModel)]="editMeal.name" >
+          </div>
+          <div class="form-group">
+            <label for="price" class="col-form-label">Prix:</label>
+            <input name="price" type="text" class="form-control" id="price" [(ngModel)]="editMeal.price">
+          </div>
+          <div class="form-group">
+            <label for="img" class="col-form-label">Image: </label>
+            <input type="file" name="img" class="form-control" id="img" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="description" class="col-form-label">Description:</label>
+            <textarea name="description" class="form-control" id="description" [(ngModel)]="editMeal.description"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -31,6 +31,12 @@ export class ApiService {
         return this.http.post(urlCheckout, data);
     }
 
+    createPromotion(data: { promotion: {code:string, value: number}, token: string}) {
+        let urlPromotion;
+        urlPromotion = environment.app_url + '/admin/promotion?token=' + data.token;
+        return this.http.post(urlPromotion, data);
+    }
+
     fetchOrders(auth: WebAuth) {
         let urlCheckout;
         urlCheckout = environment.app_url + '/admin/orders/?token=' + auth.token;
@@ -41,6 +47,12 @@ export class ApiService {
         let urlUsers;
         urlUsers = environment.app_url + '/admin/users/?token=' + auth.token;
         return this.http.get(urlUsers);
+    }
+
+    fetchPromotions(auth: WebAuth) {
+        let urlPromos;
+        urlPromos = environment.app_url + '/admin/promotions/?token=' + auth.token;
+        return this.http.get(urlPromos);
     }
 
     changeOrderStatus(data) {
@@ -78,11 +90,14 @@ export class ApiService {
 
     changeMeal(data) {
         let urlChangeMeal;
-        urlChangeMeal = environment.app_url + '/admin/user/ban';
+        urlChangeMeal = environment.app_url + '/admin/meal/'+ data.id;
 
         const body = new HttpParams()
             .set(`token`, data.auth.token)
             .set(`id`, data.id)
+            .set(`price`, data.price)
+            .set(`name`, data.name)
+            .set(`description`, data.description);
 
         const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
@@ -94,13 +109,7 @@ export class ApiService {
 
     deleteMeal(data) {
         let urlDeleteMeal;
-        urlDeleteMeal = environment.app_url + '/admin/user/ban';
-
-        const body = new HttpParams()
-            .set(`token`, data.auth.token)
-            .set(`id`, data.id)
-
-        const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        urlDeleteMeal = environment.app_url + '/admin/meal/' + data._id + '?token=' + data.auth.token;
 
         data.token = data.auth.token;
         return this.http.delete(urlDeleteMeal, data);

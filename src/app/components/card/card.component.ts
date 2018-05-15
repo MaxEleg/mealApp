@@ -16,6 +16,7 @@ import { environment} from '../../../environments/environment';
 export class CardComponent implements OnInit {
   meals: Meal[] = [];
   devise = environment.devise;
+  app_url = environment.app_url;
 
   constructor(private accountService: AccountService, private apiService: ApiService, private store: Store<AppState> ) {
     this.accountService = accountService;

@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Actions
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a (click)="fetchPromotions()" class="dropdown-item">
+        Rafraichir
+      </a>
+      <a class="dropdown-item" data-toggle="modal" data-target="#modalNew">
+        Nouvelle promotion
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Valeur (%)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let promotion of promotions">
+      <td>{{ promotion.code }}</td>
+      <td>{{ promotion.value }}%</td>
+      <td>
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Actions
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a (click)="deletePromotion(promotion)" class="dropdown-item">
+              Supprimer
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Nouvelle promotion :</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #registerForm="ngForm" (ngSubmit)="submitPromotion(registerForm.value)" >
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="code" class="col-form-label">Code:</label>
+            <input name="code" type="text" class="form-control" id="code" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="value" class="col-form-label">Valeur (%) :</label>
+            <input name="value" type="text" class="form-control" id="value" ngModel>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

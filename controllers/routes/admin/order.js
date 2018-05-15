@@ -17,7 +17,7 @@ function getOrders (req,res){
       _sendErr(err);
       return;
     }
-    res.json(orders);
+    res.json(orders.reverse());
   });
 };
 

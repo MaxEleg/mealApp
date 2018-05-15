@@ -14,6 +14,7 @@ var orderSchema = new mongoose.Schema({
   address: { type: String },
   phone: { type: String },
   mail: { type: String },
+  promotion: { type: Schema.Types.ObjectId, ref: 'promotions' }
 });
 
 

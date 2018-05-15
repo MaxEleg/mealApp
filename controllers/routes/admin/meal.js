@@ -32,7 +32,6 @@ function addMeal (req,res){
 
 function deleteMeal (req,res){
   var id = req.params.id;
-
   function _sendErr(err) {
     console.log(err);
     res.status(400).send({msg: 'Error occured'});
@@ -49,6 +48,7 @@ function deleteMeal (req,res){
 function updateMeal (req,res){
   var id = req.params.id;
   var newMeal = req.body;
+  console.log(newMeal);
   function _sendErr(err) {
     console.log(err);
     res.status(400).send({msg: 'Error occured'});
