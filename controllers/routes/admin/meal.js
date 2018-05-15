@@ -14,7 +14,7 @@ function getMeals (req,res){
   });
 };
 function addMeal (req,res){
-  var newMeal = new models.Meal(req.body);
+  var newMeal = new models.Meal(req.body.meal);
   newMeal.createdAt = new Date();
 
   function _sendErr(err) {
@@ -48,7 +48,6 @@ function deleteMeal (req,res){
 function updateMeal (req,res){
   var id = req.params.id;
   var newMeal = req.body;
-  console.log(newMeal);
   function _sendErr(err) {
     console.log(err);
     res.status(400).send({msg: 'Error occured'});

@@ -56,4 +56,22 @@ export class BackOfficeMealsComponent implements OnInit {
             alert(result.error.msg);
         });
     }
+
+    newSubmit(newMeal){
+
+        newMeal.price = newMeal.price.toString().replace(',','.');
+
+        var data = {
+            meal: newMeal,
+            token: this.auth.token
+        };
+
+        this.apiService.createMeal(data).subscribe(result=>{
+            alert('Votre plat à bien été ajouté !');
+            this.fetchMeals();
+        }, result=>{
+            console.log(result);
+            alert(result.error.msg);
+        });
+    }
 }

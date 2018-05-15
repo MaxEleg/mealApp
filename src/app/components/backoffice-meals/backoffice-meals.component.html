@@ -1,8 +1,16 @@
 <div class="row">
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" (click)="fetchMeals()" class="btn btn-secondary">
-      <i class="fas fa-sync-alt"></i> Rafraîchir
+  <div class="btn-group" role="group">
+    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Actions
     </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a (click)="fetchMeals()" class="dropdown-item">
+        Rafraichir
+      </a>
+      <a class="dropdown-item" data-toggle="modal" data-target="#modalNewMeal">
+        Nouveau plat
+      </a>
+    </div>
   </div>
 </div>
 
@@ -25,7 +33,7 @@
             Actions
           </button>
           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <a class="dropdown-item" (click)="setEdit(meal)" data-toggle="modal" data-target="#modalEdit">
+            <a class="dropdown-item" (click)="setEdit(meal)" data-toggle="modal" data-target="#modalEditMeal">
               Editer
             </a>
             <a (click)="deleteMeal(meal)" class="dropdown-item">
@@ -40,7 +48,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalEditMeal" tabindex="1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -62,12 +70,44 @@
             <input name="price" type="text" class="form-control" id="price" [(ngModel)]="editMeal.price">
           </div>
           <div class="form-group">
-            <label for="img" class="col-form-label">Image: </label>
-            <input type="file" name="img" class="form-control" id="img" ngModel>
+            <label for="description" class="col-form-label">Description:</label>
+            <textarea name="description" class="form-control" id="description" [(ngModel)]="editMeal.description"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modalNewMeal" tabindex="2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title">Ajouter un plat</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form #newForm="ngForm" (ngSubmit)="newSubmit(newForm.value)" >
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="name" class="col-form-label">Nom:</label>
+            <input name="name" type="text" class="form-control" ngModel>
+          </div>
+          <div class="form-group">
+            <label for="price" class="col-form-label">Prix:</label>
+            <input name="price" type="text" class="form-control" ngModel>
           </div>
           <div class="form-group">
             <label for="description" class="col-form-label">Description:</label>
-            <textarea name="description" class="form-control" id="description" [(ngModel)]="editMeal.description"></textarea>
+            <textarea name="description" class="form-control" ngModel></textarea>
           </div>
         </div>
         <div class="modal-footer">

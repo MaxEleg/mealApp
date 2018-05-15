@@ -49,7 +49,7 @@ export class BackOfficePromotionsComponent implements OnInit {
 
     deletePromotion(promotion){
         promotion.auth = this.auth;
-        this.apiService.deleteMeal(promotion).subscribe(result=>{
+        this.apiService.deletePromotion(promotion).subscribe(result=>{
             this.fetchPromotions();
         }, result=>{
             console.log(result);

@@ -37,6 +37,12 @@ export class ApiService {
         return this.http.post(urlPromotion, data);
     }
 
+    createMeal(data: { meal: any, token: string}) {
+        let urlMeal;
+        urlMeal = environment.app_url + '/admin/meal?token=' + data.token;
+        return this.http.post(urlMeal, data);
+    }
+
     fetchOrders(auth: WebAuth) {
         let urlCheckout;
         urlCheckout = environment.app_url + '/admin/orders/?token=' + auth.token;
@@ -110,6 +116,13 @@ export class ApiService {
     deleteMeal(data) {
         let urlDeleteMeal;
         urlDeleteMeal = environment.app_url + '/admin/meal/' + data._id + '?token=' + data.auth.token;
+
+        data.token = data.auth.token;
+        return this.http.delete(urlDeleteMeal, data);
+    }
+    deletePromotion(data) {
+        let urlDeleteMeal;
+        urlDeleteMeal = environment.app_url + '/admin/promotion/' + data._id + '?token=' + data.auth.token;
 
         data.token = data.auth.token;
         return this.http.delete(urlDeleteMeal, data);
