@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  app_url: 'http://localhost:3000',
+  app_url: 'https://lunchcloud.herokuapp.com',
   devise: '€'
 };
