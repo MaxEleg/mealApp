@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/",
-    "start-prod": "ng build --prod && node ./server/",
+    "start": "ng build --prod && node ./server/",
     "ng": "ng",
     "build": "ng build --prod --watch",
     "test": "ng test",
