@@ -1,3 +1,3 @@
 node_modules
 .idea
-controllers/routes/index.js
+.env
