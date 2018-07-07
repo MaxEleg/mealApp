@@ -68,19 +68,7 @@ function  checkout (req,res) {
         month: payment.cardExpiration.split('/')[0],
         year: payment.cardExpiration.split('/')[1]
       };
-
-      /*stripe.pay({ DISABLE B'CAUZ API SANDBOX KEY CHANGES EVERYTIME
-        cvc: payment.cvv,
-        exp_month: exp.month,
-        exp_year: exp.year,
-        number: payment.cardNumber,
-        price: order.price
-      },function (err, result){
-        if(err){
-          console.log(err);
-        }
-      });*/
-
+      
       var cbSave = function(err, newOrder){
         if(err){
           console.log(err);
