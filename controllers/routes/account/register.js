@@ -18,10 +18,10 @@ function register (req,res){
   user.createdAt = new Date();
   user.rank = 0;
 
-  if(user.username.length < 4){
+  if(user.username && user.username.length < 4){
     errors.push({ msg : "La taille du nom de compte est minimum 4 caractères."});
   }
-  if(user.password.length < 4){
+  if(user.password && user.password.length < 4){
     errors.push({ msg : "La taille du mot de mot de passe est minimum 4 caractères."});
   }
 
