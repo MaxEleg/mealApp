@@ -4,6 +4,7 @@ var config = require("../../config");
 var Response = function(){};
 Response.prototype.status = function(status){
   this.statusCode = status;
+  console.log(status);
   return this;
 };
 

@@ -51,7 +51,7 @@ function register (req,res){
         res.status(400).json([{msg:'Une erreur est survenue.'}]);
         return;
       }
-      res.json({
+      res.status(200).json({
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         rank: 0,
