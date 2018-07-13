@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="3-backoffice.test"
+    errors="0" failures="1" hostname="" id="" package="3-backoffice.test" skipped="0"
+    tests="1" time="17.03" timestamp="Fri, 13 Jul 2018 12:11:22 GMT">
+  
+    <testcase name="auth with admin account" classname="3-backoffice.test" time="17.03" assertions="4">
+
+    
+
+    
+
+      <failure message="Testing if element &lt;#orders-list&gt; contains text: &#34;nightmeal1&#34;.">    at Object.auth with admin account (c:\Users\Max\Desktop\ESGI\projets\mealApp\e2e-tests\3-backoffice.test.js:20:15)
+    at _combinedTickCallback (internal/process/next_tick.js:131:7)
+    at process._tickCallback (internal/process/next_tick.js:180:9)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

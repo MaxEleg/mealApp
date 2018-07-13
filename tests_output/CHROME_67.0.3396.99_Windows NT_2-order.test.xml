@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="2-order.test"
+    errors="0" failures="0" hostname="" id="" package="2-order.test" skipped="0"
+    tests="1" time="68.14" timestamp="Fri, 13 Jul 2018 11:24:54 GMT">
+  
+    <testcase name="test add meal to basket and checkout" classname="2-order.test" time="68.14" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

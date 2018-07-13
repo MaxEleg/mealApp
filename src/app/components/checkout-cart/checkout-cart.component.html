@@ -62,9 +62,9 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="card">
-        <div class="card-body">
+        <div id="order-result" class="card-body">
           <h5 class="card-title">Votre commande est passée ! </h5>
-          <p class="card-text">Elle porte l'identifiant : {{ order._id }}.</p>
+          <p class="card-text">Elle porte l'identifiant : <span id="order-id">{{ order._id }}</span>.</p>
           <a routerLink="/card" class="btn btn-primary">Retour à la liste des articles</a>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark main-nav">
-  <a class="navbar-brand logo-item" routerLink="/">
+  <a id="logo-container" class="navbar-brand logo-item" routerLink="/">
     <img id="main-logo" src="./assets/images/burger.png">
     <span id="main-title">LunchCloud</span>
   </a>
@@ -21,16 +21,16 @@
 
           <a *ngIf="auth.isAuth" class="dropdown-item" routerLink="/">Connecté en tant que {{ auth.lastName }} {{ auth.firstName }}</a>
           <a *ngIf="auth.isAuth" class="dropdown-item" routerLink="/edit">Editer mon profil</a>
-          <a *ngIf="auth.isAuth && auth.rank >= 3" class="dropdown-item" routerLink="/backoffice">
+          <a id="backoffice-item" *ngIf="auth.isAuth && auth.rank >= 3" class="dropdown-item" routerLink="/backoffice">
             Acceder au backoffice
           </a>
           <a class="dropdown-item" *ngIf="auth.isAuth" class="dropdown-item" (click)="logout()">Se déconnecter</a>
         </div>
       </li>
-      <li class="nav-item">
+      <li id="checkout-container" class="nav-item">
         <a routerLink="/shopping-cart" class="nav-link checkout">
           <i class="fa fa-shopping-cart" style="color: black;"></i>
-          <span *ngIf="cart.length" id="checkout_items" class="checkout_items">{{ cart.length }}</span>
+          <span *ngIf="cart.length" id="checkout-items" class="checkout_items">{{ cart.length }}</span>
         </a>
       </li>
     </ul>

@@ -19,11 +19,15 @@
       </tr>
       <tr>
         <th colspan="2"><span class="pull-right">Sub Total</span></th>
-        <th>{{ total }} {{ devise }}</th>
+        <th id="order-total">{{ total }} {{ devise }}</th>
       </tr>
       <tr>
         <td><a routerLink="/card" class="btn btn-primary">Continuer ma commande</a></td>
-        <td colspan="2"><a routerLink="/checkout-cart" class="pull-right btn btn-success">Procéder au paiement</a></td>
+        <td colspan="2">
+          <a id="submit-order" routerLink="/checkout-cart" class="pull-right btn btn-success">
+            Procéder au paiement
+          </a>
+        </td>
       </tr>
       <tr>
         <td><button (click)="removeBasket()" class="btn btn-danger">Vider mon panier</button></td>
