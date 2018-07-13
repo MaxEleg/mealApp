@@ -24,9 +24,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let meal of meals" id="{{ meal._id }}">
-      <td>{{ meal.name }}</td>
-      <td>{{ meal.price }} {{ device}}</td>
+    <tr *ngFor="let meal of meals" id="order-item-{{ meal._id }}">
+      <td id="order-item-name-{{ meal._id }}">{{ meal.name }}</td>
+      <td id="order-item-price-{{ meal._id }}">{{ meal.price }} {{ device}}</td>
       <td>
         <div class="btn-group" role="group">
           <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
