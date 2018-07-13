@@ -1,5 +1,5 @@
 module.exports = {
-  'Index test' : function (browser) {
+  'test index rendering' : function (browser) {
     browser
       .url('http://localhost:3000/')
       .waitForElementVisible('body', 1000)

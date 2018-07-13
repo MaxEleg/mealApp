@@ -1,5 +1,5 @@
 module.exports = {
-  "test register" : function (browser) {
+  "test account register" : function (browser) {
     browser
       .url('http://localhost:3000/')
       .waitForElementVisible('body', 10000)
@@ -16,10 +16,10 @@ module.exports = {
       .setValue('input[name=phone]', '+36666666666666')
       .click('button[type=submit]')
       .pause(1500)
-      .assert.containsText('h1', 'Vous etes connecté en tant que nightwatch nightwatch')
+      .assert.containsText('#logged-register-txt', 'Vous etes connecté en tant que nightwatch nightwatch')
       .end();
   },
-  "test auth" : function (browser) {
+  "test auth with account" : function (browser) {
     browser
       .url('http://localhost:3000/')
       .waitForElementVisible('body', 10000)
@@ -31,7 +31,8 @@ module.exports = {
       .setValue('input[name=account]', 'nightwatch')
       .setValue('input[name=password]', 'nightwatch')
       .click('button[type=submit]')
-      .assert.containsText('h1', 'Vous etes connecté en tant que nightwatch nightwatch')
+      .pause(1500)
+      .assert.containsText('#logged-txt', 'Vous etes connecté en tant que nightwatch nightwatch')
       .pause(1500)
       .end();
   }

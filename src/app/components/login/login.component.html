@@ -20,7 +20,7 @@
 <div *ngIf="auth.isAuth" class="row already-auth">
   <div class="col-xs-3 col-sm-4 col-md-4"></div>
   <div class="col-xs-3 col-sm-4 col-md-4">
-    <h1 class="h3 mb-3 font-weight-normal">Vous etes connecté en tant que {{ auth.lastName }} {{ auth.firstName }}</h1>
+    <h1 id="logged-txt" class="h3 mb-3 font-weight-normal">Vous etes connecté en tant que {{ auth.lastName }} {{ auth.firstName }}</h1>
     <button class="btn btn-lg btn-primary btn-block" (click)="logout()">Se déconnecter</button>
   </div>
 </div>
