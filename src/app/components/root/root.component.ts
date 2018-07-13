@@ -27,8 +27,10 @@ export class RootComponent implements OnInit {
   loadWebAuth() {
     // We initiate auth store from last save
     const authItem: WebAuth = JSON.parse(localStorage.getItem('authItem'));
-    if (authItem) {
+    if (authItem && authItem.isAuth) {
       this.store.dispatch(new AuthActions.LoginIn(authItem));
+    }else{
+      this.store.dispatch(new AuthActions.LogOut());
     }
   }
 

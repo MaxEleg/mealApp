@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="2">
+
+  <testsuite name="register.test"
+    errors="0" failures="0" hostname="" id="" package="register.test" skipped="0"
+    tests="2" time="31.05" timestamp="Fri, 13 Jul 2018 01:28:39 GMT">
+  
+    <testcase name="test register" classname="register.test" time="10.10" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="test auth" classname="register.test" time="20.95" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>

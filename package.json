@@ -9,6 +9,7 @@
     "build": "ng build --prod --watch",
     "test": "ng test",
     "tests": "node ./node_modules/mocha/bin/mocha --recursive",
+    "e2e-tests": "nightwatch",
     "unit-tests": "node ./node_modules/mocha/bin/mocha --recursive",
     "lint": "ng lint",
     "e2e": "ng e2e"

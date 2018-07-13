@@ -16,7 +16,7 @@
     <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm.value)" >
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="firstName">Nom </label>
+          <label for="lastName">Nom </label>
           <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Dupont" value="" ngModel>
         </div>
         <div class="col-md-6 mb-3">
@@ -59,7 +59,7 @@
         </div>
         <div class="col-md-4 mb-3">
           <label for="state">Mois</label>
-          <select name="birthMonth" class="custom-select d-block w-100" id="state" required="Selectionnez un mois" ngModel>
+          <select id="birthMonth" name="birthMonth" class="custom-select d-block w-100" id="state" required="Selectionnez un mois" ngModel>
             <option value="0">Mois</option>
             <option value="1">jan</option>
             <option value="2">fév</option>
